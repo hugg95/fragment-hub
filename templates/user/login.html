@@ -1,0 +1,26 @@
+{% extends "common/basic.html" %}
+{% load staticfiles %}
+{% block css %}
+<link href="{% static 'css/basic.css' %}" type="text/css" rel="stylesheet">
+<link href="{% static 'css/login.css' %}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block title %}User sign in{% endblock %}
+{% block main %}
+<form class="form-area" action="/user/login/" method="post">{% csrf_token %}
+    <h3>User sign in</h3>
+    <input type="text" class="form-control" name="name" placeholder="Name" autofocus="true">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="remember"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-default btn-primary btn-block" type="submit">Sign in</button>
+    <div class="form-bottom">
+        <a href="/user/signup">sign up</a> or <a href="/user/change_password">change your password</a>
+    </div>
+</form>
+{% endblock %}
+{% block script %}
+<script type="text/javascript" data-module="login"></script>
+{% endblock %}

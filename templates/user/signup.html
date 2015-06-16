@@ -1,0 +1,23 @@
+{% extends "common/basic.html" %}
+{% load staticfiles %}
+{% block css %}
+<link href="{% static 'css/basic.css' %}" type="text/css" rel="stylesheet">
+<link href="{% static 'css/signup.css' %}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block title %}User sign up{% endblock %}
+{% block main %}
+<form class="form-area" action="/user/signup/" method="post">{% csrf_token %}
+    <h3>User sign up</h3>
+    <input type="text" class="form-control" name="name" placeholder="Name" autofocus="true">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+    <input type="password" class="form-control" name="password_confirm" placeholder="Confirm password">
+    <input type="text" class="form-control" name="email" placeholder="Email address">
+    <button class="btn btn-default btn-primary btn-block" type="submit">Sign up</button>
+    <div class="form-bottom">
+        Already have account? <a href="/user/login">sign in</a>
+    </div>
+</form>
+{% endblock %}
+{% block script %}
+<script type="text/javascript" data-module="signup"></script>
+{% endblock %}
